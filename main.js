@@ -111,8 +111,7 @@ const pets = [
     id: 13,
     name: "Remington",
     color: "Tan & White",
-    specialSkill:
-      "Expertly quotes and recognizes dialogue from early seasons of The Simpsons.",
+    specialSkill: "Remi (as he's known by his friends) is a lap dog's lap dog.",
     type: "dog",
     imageUrl: "images/remington.jpg",
     //"http://1kjkdg1axrkd2g03cnboj761.wpengine.netdna-cdn.com/wp-content/uploads/2017/12/braydon-anderson-105552-e1512684107659.jpg",
@@ -279,11 +278,15 @@ const targetInApp = document.querySelector("#app");
 let domString = "";
 
 for (const pet of pets) {
-  // let petTypeColor;
-
-  // if(pet.type === 'cat'){
-  //   petTypeColor =
-  // }
+  let cardFooterColor;
+  if (pet.type === "cat") {
+    console.log(pet.type);
+    cardFooterColor = "bg-blue";
+  } else if (pet.type === "dog") {
+    cardFooterColor = "bg-green";
+  } else if (pet.type === "dino") {
+    cardFooterColor = "bg-yellow";
+  }
   domString += `
   <div class="card">
     <div class="card-header text-center fw-bold">
@@ -294,7 +297,13 @@ for (const pet of pets) {
         <p class="card-text text-center">${pet.color}</p>
         <p class="card-text">${pet.specialSkill}</p>
       </div>
-      <div class="card-footer text-center">${pet.type}</div>
+      <div class="card-footer text-center ${cardFooterColor}">${pet.type}</div>
 </div>`;
+
+  const footerColor = document.querySelector(".card-footer");
+  console.log(footerColor);
+  // if (pet.type === "cat") {
+  //   footerColor.style.backgroundColor = "yellow";
+  // }
 }
 targetInApp.innerHTML = domString;

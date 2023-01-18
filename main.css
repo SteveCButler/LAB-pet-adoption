@@ -12,3 +12,18 @@
   width: 400px;
   height: 375px;
 }
+.bg-yellow {
+  background-color: palegoldenrod;
+  color: darkgoldenrod;
+  font-weight: 600;
+}
+.bg-blue {
+  background-color: lightblue;
+  color: blue;
+  font-weight: 600;
+}
+.bg-green {
+  background-color: lightgreen;
+  color: darkgreen;
+  font-weight: 600;
+}
