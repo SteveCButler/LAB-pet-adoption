@@ -1,0 +1,10 @@
+#app {
+  width: 80%;
+  margin: 2em auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2em;
+}
+#app > * {
+  width: 30%;
+}
