@@ -273,21 +273,26 @@ const pets = [
   },
 ];
 
-const targetInApp = document.querySelector("#app");
+//  Query Selectors
+//const targetInApp = document.querySelector("#app");
+const catFilterButton = document.querySelector("#cat");
+const dogFilterButton = document.querySelector("#dog");
+const dinoFilterButton = document.querySelector("#dino");
+const allPetsButton = document.querySelector("#allPets");
 
-let domString = "";
+const cardsOnDom = (array) => {
+  let domString = "";
 
-for (const pet of pets) {
-  let cardFooterColor;
-  if (pet.type === "cat") {
-    console.log(pet.type);
-    cardFooterColor = "bg-blue";
-  } else if (pet.type === "dog") {
-    cardFooterColor = "bg-green";
-  } else if (pet.type === "dino") {
-    cardFooterColor = "bg-yellow";
-  }
-  domString += `
+  for (const pet of array) {
+    let cardFooterColor;
+    if (pet.type === "cat") {
+      cardFooterColor = "bg-blue";
+    } else if (pet.type === "dog") {
+      cardFooterColor = "bg-green";
+    } else if (pet.type === "dino") {
+      cardFooterColor = "bg-yellow";
+    }
+    domString += `
   <div class="card">
     <div class="card-header text-center fw-bold">
       ${pet.name}
@@ -300,10 +305,53 @@ for (const pet of pets) {
       <div class="card-footer text-center ${cardFooterColor}">${pet.type}</div>
 </div>`;
 
-  const footerColor = document.querySelector(".card-footer");
-  console.log(footerColor);
-  // if (pet.type === "cat") {
-  //   footerColor.style.backgroundColor = "yellow";
-  // }
-}
-targetInApp.innerHTML = domString;
+    // const footerColor = document.querySelector(".card-footer");
+    // console.log(footerColor);
+    // if (pet.type === "cat") {
+    //   footerColor.style.backgroundColor = "yellow";
+    // }
+  }
+  renderToDom("#app", domString);
+};
+
+const renderToDom = (divId, htmlToRender) => {
+  const selectedDiv = document.querySelector(divId);
+  selectedDiv.innerHTML = htmlToRender;
+};
+
+// filter function
+const filter = (array, petType) => {
+  const petTypeArray = [];
+  for (const pet of array) {
+    if (pet.type === petType) {
+      petTypeArray.push(pet);
+    }
+  }
+
+  return petTypeArray;
+};
+
+// filter all cats
+catFilterButton.addEventListener("click", () => {
+  const cats = filter(pets, "cat");
+
+  cardsOnDom(cats);
+});
+// filter all dogs
+dogFilterButton.addEventListener("click", () => {
+  const dogs = filter(pets, "dog");
+
+  cardsOnDom(dogs);
+});
+// filter all dinos
+dinoFilterButton.addEventListener("click", () => {
+  const dinos = filter(pets, "dino");
+
+  cardsOnDom(dinos);
+});
+
+allPetsButton.addEventListener("click", () => {
+  cardsOnDom(pets);
+});
+
+cardsOnDom(pets);
