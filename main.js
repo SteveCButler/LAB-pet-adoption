@@ -284,14 +284,14 @@ const cardsOnDom = (array) => {
   let domString = "";
 
   for (const pet of array) {
-    let cardFooterColor;
-    if (pet.type === "cat") {
-      cardFooterColor = "bg-blue";
-    } else if (pet.type === "dog") {
-      cardFooterColor = "bg-green";
-    } else if (pet.type === "dino") {
-      cardFooterColor = "bg-yellow";
-    }
+    // let cardFooterColor;
+    // if (pet.type === "cat") {
+    //   cardFooterColor = "bg-blue";
+    // } else if (pet.type === "dog") {
+    //   cardFooterColor = "bg-green";
+    // } else if (pet.type === "dino") {
+    //   cardFooterColor = "bg-yellow";
+    // }
     domString += `
   <div class="card">
     <div class="card-header text-center fw-bold">
@@ -301,15 +301,12 @@ const cardsOnDom = (array) => {
         <img class="img-fluid"src=${pet.imageUrl} />
         <p class="card-text text-center">${pet.color}</p>
         <p class="card-text">${pet.specialSkill}</p>
+        <button class="btn btn-danger btn-sm" id="delete--${pet.id}">Delete</button>
       </div>
-      <div class="card-footer text-center ${cardFooterColor}">${pet.type}</div>
-</div>`;
+      <div class="card-footer text-center bg--${pet.type}">${pet.type}</div>
+</div>
 
-    // const footerColor = document.querySelector(".card-footer");
-    // console.log(footerColor);
-    // if (pet.type === "cat") {
-    //   footerColor.style.backgroundColor = "yellow";
-    // }
+`;
   }
   renderToDom("#app", domString);
 };
@@ -354,4 +351,65 @@ allPetsButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
 
-cardsOnDom(pets);
+// create new pet object and update display
+const makePet = (event) => {
+  event.preventDefault();
+  const name = document.querySelector("#name");
+  const color = document.querySelector("#color");
+  const specialSkills = document.querySelector("#specialSkills");
+  const type = document.querySelector("#type");
+  const image = document.querySelector("#image");
+
+  const newPet = {
+    name: name.value,
+    color: color.value,
+    specialSkill: specialSkills.value,
+    type: type.value,
+    imageUrl: image.value,
+  };
+
+  pets.push(newPet);
+
+  cardsOnDom(pets);
+};
+
+// form submit button
+const submitBtn = document.querySelector("#form-submit");
+submitBtn.addEventListener("click", makePet);
+
+// Delete buttons
+
+const appDiv = document.querySelector("#app");
+
+appDiv.addEventListener("click", (event) => {
+  if (event.target.id.includes("delete")) {
+    const [, memberId] = event.target.id.split("--");
+
+    const indexMemberOf = pets.findIndex(
+      (object) => object.id === Number(memberId)
+    );
+
+    pets.splice(indexMemberOf, 1);
+  }
+
+  cardsOnDom(pets);
+});
+
+//show - hide form
+
+const showHideBtn = document.querySelector("#addPet");
+
+showHideBtn.addEventListener("click", () => {
+  var form = document.querySelector("#formContainer");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
+};
+
+startApp();

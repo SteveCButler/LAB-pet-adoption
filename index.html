@@ -16,10 +16,65 @@
   </head>
   <body>
     <div class="filterByAnimal">
-      <button class="bg-blue" id="cat">Cats</button>
-      <button class="bg-green" id="dog">Dogs</button>
-      <button class="bg-yellow" id="dino">Dinos</button>
+      <button class="bg--cat" id="cat">Cats</button>
+      <button class="bg--dog" id="dog">Dogs</button>
+      <button class="bg--dino" id="dino">Dinos</button>
       <button id="allPets">All Pets</button>
+      <button id="addPet">Add Pet</button>
+    </div>
+
+    <div id="formContainer">
+      <p class="formText">Add a Pet for Adoption</p>
+      <form>
+        <div class="form-floating mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            placeholder="Name"
+          />
+          <label for="name">Name</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="color"
+            placeholder="Color"
+          />
+          <label for="color">Color</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="specialSkills"
+            placeholder="Special Skills"
+          />
+          <label for="specialSkills">Special Skills</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input
+            type="text"
+            class="form-control"
+            id="type"
+            placeholder="Type"
+          />
+          <label for="type">Type</label>
+        </div>
+        <div class="form-floating mb-2">
+          <input
+            type="url"
+            class="form-control"
+            id="image"
+            placeholder="Image"
+          />
+          <label for="image">Image</label>
+        </div>
+        <button type="submit" class="btn btn-success" id="form-submit">
+          Add Pet
+        </button>
+      </form>
     </div>
     <div id="app"></div>
     <script
