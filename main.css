@@ -45,3 +45,12 @@
 .filterByAnimal button:hover {
   box-shadow: 3px 5px 5px darkgrey;
 }
+form {
+  width: 50%;
+  margin: 0 auto;
+}
+
+.formText {
+  margin-top: 1em;
+  text-align: center;
+}

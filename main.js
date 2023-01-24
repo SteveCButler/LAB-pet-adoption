@@ -301,15 +301,12 @@ const cardsOnDom = (array) => {
         <img class="img-fluid"src=${pet.imageUrl} />
         <p class="card-text text-center">${pet.color}</p>
         <p class="card-text">${pet.specialSkill}</p>
+        <button class="btn btn-danger btn-sm" id="delete--${pet.id}">Delete</button>
       </div>
       <div class="card-footer text-center ${cardFooterColor}">${pet.type}</div>
-</div>`;
+</div>
 
-    // const footerColor = document.querySelector(".card-footer");
-    // console.log(footerColor);
-    // if (pet.type === "cat") {
-    //   footerColor.style.backgroundColor = "yellow";
-    // }
+`;
   }
   renderToDom("#app", domString);
 };
@@ -354,4 +351,27 @@ allPetsButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
 
+const makePet = (event) => {
+  event.preventDefault();
+  const name = document.querySelector("#name");
+  const color = document.querySelector("#color");
+  const specialSkills = document.querySelector("#specialSkills");
+  const type = document.querySelector("#type");
+  const image = document.querySelector("#image");
+
+  const newPet = {
+    name: name.value,
+    color: color.value,
+    specialSkills: specialSkills.value,
+    type: type.value,
+    image: image.value,
+  };
+
+  pets.push(newPet);
+  cardsOnDom(pets);
+};
+
+const submitBtn = document.querySelector("#form-submit");
+
+submitBtn.addEventListener("click", makePet);
 cardsOnDom(pets);
