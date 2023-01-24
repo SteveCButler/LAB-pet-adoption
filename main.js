@@ -284,14 +284,14 @@ const cardsOnDom = (array) => {
   let domString = "";
 
   for (const pet of array) {
-    let cardFooterColor;
-    if (pet.type === "cat") {
-      cardFooterColor = "bg-blue";
-    } else if (pet.type === "dog") {
-      cardFooterColor = "bg-green";
-    } else if (pet.type === "dino") {
-      cardFooterColor = "bg-yellow";
-    }
+    // let cardFooterColor;
+    // if (pet.type === "cat") {
+    //   cardFooterColor = "bg-blue";
+    // } else if (pet.type === "dog") {
+    //   cardFooterColor = "bg-green";
+    // } else if (pet.type === "dino") {
+    //   cardFooterColor = "bg-yellow";
+    // }
     domString += `
   <div class="card">
     <div class="card-header text-center fw-bold">
@@ -303,7 +303,7 @@ const cardsOnDom = (array) => {
         <p class="card-text">${pet.specialSkill}</p>
         <button class="btn btn-danger btn-sm" id="delete--${pet.id}">Delete</button>
       </div>
-      <div class="card-footer text-center ${cardFooterColor}">${pet.type}</div>
+      <div class="card-footer text-center bg--${pet.type}">${pet.type}</div>
 </div>
 
 `;
@@ -351,6 +351,7 @@ allPetsButton.addEventListener("click", () => {
   cardsOnDom(pets);
 });
 
+// create new pet object and update display
 const makePet = (event) => {
   event.preventDefault();
   const name = document.querySelector("#name");
@@ -372,7 +373,43 @@ const makePet = (event) => {
   cardsOnDom(pets);
 };
 
+// form submit button
 const submitBtn = document.querySelector("#form-submit");
-
 submitBtn.addEventListener("click", makePet);
-cardsOnDom(pets);
+
+// Delete buttons
+
+const appDiv = document.querySelector("#app");
+
+appDiv.addEventListener("click", (event) => {
+  if (event.target.id.includes("delete")) {
+    const [, memberId] = event.target.id.split("--");
+
+    const indexMemberOf = pets.findIndex(
+      (object) => object.id === Number(memberId)
+    );
+
+    pets.splice(indexMemberOf, 1);
+  }
+
+  cardsOnDom(pets);
+});
+
+//show - hide form
+
+const showHideBtn = document.querySelector("#addPet");
+
+showHideBtn.addEventListener("click", () => {
+  var form = document.querySelector("#formContainer");
+  if (form.style.display === "none") {
+    form.style.display = "block";
+  } else {
+    form.style.display = "none";
+  }
+});
+
+const startApp = () => {
+  cardsOnDom(pets);
+};
+
+startApp();
