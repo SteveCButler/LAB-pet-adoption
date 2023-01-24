@@ -362,12 +362,13 @@ const makePet = (event) => {
   const newPet = {
     name: name.value,
     color: color.value,
-    specialSkills: specialSkills.value,
+    specialSkill: specialSkills.value,
     type: type.value,
-    image: image.value,
+    imageUrl: image.value,
   };
 
   pets.push(newPet);
+
   cardsOnDom(pets);
 };
 
