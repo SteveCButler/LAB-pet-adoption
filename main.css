@@ -56,7 +56,7 @@
   text-align: center;
 }
 #formContainer {
-  /* display: none; */
+  display: none;
   width: 50%;
   margin: 0 auto;
 }
