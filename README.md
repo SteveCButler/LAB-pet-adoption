@@ -1,7 +1,7 @@
 # Pet Adoption Website
 
 ## What it is?
-* The pet adoption website is a exercise in building a CRUD (Create Read Update Delte) application
+* The pet adoption website is a exercise in building a CRUD (Create Read Update Delete) application
 * It is a class project for NSS
 
 ## How does it work?
