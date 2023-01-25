@@ -56,7 +56,6 @@
   text-align: center;
 }
 #formContainer {
-  display: none;
   width: 50%;
   margin: 0 auto;
 }
@@ -64,4 +63,10 @@
 #addPet {
   background-color: dimgrey;
   color: white;
+}
+.hideForm {
+  display: none;
+}
+.showForm {
+  display: block;
 }
