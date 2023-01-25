@@ -361,6 +361,7 @@ const makePet = (event) => {
   const image = document.querySelector("#image");
 
   const newPet = {
+    id: pets.length + 1,
     name: name.value,
     color: color.value,
     specialSkill: specialSkills.value,
@@ -368,9 +369,10 @@ const makePet = (event) => {
     imageUrl: image.value,
   };
 
-  pets.push(newPet);
+  pets.unshift(newPet);
 
   cardsOnDom(pets);
+  document.querySelector("form").reset();
 };
 
 // form submit button
@@ -378,7 +380,6 @@ const submitBtn = document.querySelector("#form-submit");
 submitBtn.addEventListener("click", makePet);
 
 // Delete buttons
-
 const appDiv = document.querySelector("#app");
 
 appDiv.addEventListener("click", (event) => {
