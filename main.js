@@ -395,17 +395,24 @@ appDiv.addEventListener("click", (event) => {
   cardsOnDom(pets);
 });
 
-//show - hide form
-
+//show - hide form button Add Pet
 const showHideBtn = document.querySelector("#addPet");
 
+// **  One way to modify styles on elements: ***
+
+// showHideBtn.addEventListener("click", () => {
+//   const form = document.querySelector("#formContainer");
+//   if (form.style.display === "none") {
+//     form.style.display = "block";
+//   } else {
+//     form.style.display = "none";
+//   }
+// });
+
+// *** A way to toggle a class on and off on an element ***
 showHideBtn.addEventListener("click", () => {
-  var form = document.querySelector("#formContainer");
-  if (form.style.display === "none") {
-    form.style.display = "block";
-  } else {
-    form.style.display = "none";
-  }
+  const toggleShow = document.querySelector(".hideForm");
+  toggleShow.classList.toggle("showForm");
 });
 
 const startApp = () => {
