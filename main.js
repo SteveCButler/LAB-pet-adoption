@@ -416,6 +416,22 @@ showHideBtn.addEventListener("click", () => {
   toggleShow.classList.toggle("showForm");
 });
 
+// SEARCH
+// .filter()
+const search = (event) => {
+  const eventLC = event.target.value.toLowerCase();
+  const searchResult = pets.filter((item) => {
+    item.type.toLocaleLowerCase().includes(eventLC) ||
+      item.color.toLocaleLowerCase().includes(eventLC) ||
+      item.name.toLocaleLowerCase().includes(eventLC);
+  });
+
+  cardsOnDom(searchResult);
+};
+
+// SELECT THE SEARCH INPUT
+document.querySelector("#searchInput").addEventListener("keyup", search);
+
 const startApp = () => {
   cardsOnDom(pets);
 };
