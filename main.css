@@ -32,14 +32,14 @@
 }
 #allPets {
   background-color: mediumpurple;
-  color: indigo;
+  color: white;
   font-weight: 700;
 }
 .filterByAnimal {
   display: flex;
   justify-content: center;
   column-gap: 2em;
-  width: 50%;
+  width: 80%;
   margin: 10px auto;
 }
 .filterByAnimal button {
@@ -60,10 +60,10 @@
   margin: 0 auto;
 }
 
-#addPet {
+/* #addPet {
   background-color: dimgrey;
   color: white;
-}
+} */
 .hideForm {
   display: none;
 }
