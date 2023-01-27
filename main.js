@@ -372,7 +372,7 @@ const makePet = (event) => {
   pets.unshift(newPet);
 
   cardsOnDom(pets);
-  document.querySelector("form").reset();
+  document.querySelector("#addPetForm").reset();
 };
 
 // form submit button
@@ -420,11 +420,12 @@ showHideBtn.addEventListener("click", () => {
 // .filter()
 const search = (event) => {
   const eventLC = event.target.value.toLowerCase();
-  const searchResult = pets.filter((item) => {
-    item.type.toLocaleLowerCase().includes(eventLC) ||
+  const searchResult = pets.filter(
+    (item) =>
+      item.type.toLocaleLowerCase().includes(eventLC) ||
       item.color.toLocaleLowerCase().includes(eventLC) ||
-      item.name.toLocaleLowerCase().includes(eventLC);
-  });
+      item.name.toLocaleLowerCase().includes(eventLC)
+  );
 
   cardsOnDom(searchResult);
 };
